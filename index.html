@@ -125,15 +125,16 @@
             const measurementLabels = {}
 
             window.addEventListener('touchstart', function (event) {
-                
+                event.preventDefault();
+                if (event.touches === 'ontouchstart') {
                     ctrlDown = true
                     controls.enabled = false
                     renderer.domElement.style.cursor = 'crosshair'
-        
+                }
             })
 
             window.addEventListener('touchend', function (event) {
-    
+                if (event.touches === 'ontouchend') {
                     ctrlDown = false
                     controls.enabled = true
                     renderer.domElement.style.cursor = 'pointer'
@@ -143,7 +144,7 @@
                         scene.remove(measurementLabels[lineId])
                         drawingLine = false
                     }
-        
+                }
             })
 
             const raycaster = new THREE.Raycaster()
@@ -196,7 +197,7 @@
                     }
                 }
             }
-            document.addEventListener('touchmove', onDocumentMouseMove, false)
+            document.addEventListener('touchemove', onDocumentMouseMove)
             function onDocumentMouseMove(event) {
                 event.preventDefault()
                 mouse.x = (event.clientX / window.innerWidth) * 2 - 1
