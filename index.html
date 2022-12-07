@@ -124,7 +124,7 @@
             let drawingLine = false
             const measurementLabels = {}
 
-            document.addEventListener('touchstart', function (event) {
+            window.addEventListener('touchstart', function (event) {
                 if (event.touches=ontouchstart) {
                     ctrlDown = true
                     controls.enabled = false
@@ -132,7 +132,7 @@
                 }
             })
 
-            document.addEventListener('touchend', function (event) {
+            window.addEventListener('touchend', function (event) {
                 if (event.touches=ontouchend) {
                     ctrlDown = false
                     controls.enabled = true
