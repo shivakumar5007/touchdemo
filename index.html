@@ -124,7 +124,7 @@
             let drawingLine = false
             const measurementLabels = {}
 
-            window.addEventListener('touchstart', function (event) {
+            document.addEventListener('touchstart', function (event) {
                 if (event.touches) {
                     ctrlDown = true
                     controls.enabled = false
@@ -132,7 +132,7 @@
                 }
             })
 
-            window.addEventListener('touchend', function (event) {
+            document.addEventListener('touchend', function (event) {
                 if (event.touches) {
                     ctrlDown = false
                     controls.enabled = true
@@ -150,8 +150,8 @@
             let intersects
             const Touch = new THREE.Vector2()
             
-            renderer.domElement.addEventListener('pointerdown', onClick, false)
-            function onClick(event) {
+            renderer.domElement.addEventListener('pointerdown', onTouch, false)
+            function onTouch(event) {
                 if (ctrlDown) {
                     raycaster.setFromCamera(Touch, camera)
                     intersects = raycaster.intersectObjects(pickableObjects, false)
